@@ -1,4 +1,4 @@
-from linked_list import LinkedList
+from src.linkedlist.linked_list import LinkedList
 
 def even_after_odd(head):
 
@@ -51,5 +51,8 @@ linked_list.append(4)
 linked_list.append(5)
 linked_list.append(6)
 
-print(even_after_odd(linked_list.head.value))
-# assert even_after_odd(linked_list.head).next == 3 
+result = even_after_odd(linked_list.head)
+
+while result:
+    print(result.value)
+    result = result.next
