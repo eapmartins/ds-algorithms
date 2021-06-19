@@ -1,27 +1,22 @@
+from src.base.node import Node
+
 class Stack:
 
     def __init__(self, initial_size = 10):
-        self.arr = [0 for _ in range(initial_size)]
-        self.next_index = 0
+        self.head = None
         self.num_elements = 0
 
     def push(self, value):
 
-        if self.next_index == len(self.arr):
-            print("Out of space! Increasing array capacity.")
-            self.handle_stack_capacity_full()
+        new_node = Node(value)
 
-        self.arr[self.next_index] = value
-        self.next_index += 1
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
         self.num_elements += 1
-
-    def handle_stack_capacity_full(self):
-        old_arr = self.arr
-
-        self.arr = [0 for _ in range(2 * len(old_arr))]
-
-        for index, value in enumerate(old_arr):
-            self.arr[index] = value
 
     def size(self):
         return self.num_elements
@@ -31,10 +26,10 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            self.next_index = 0
             return None
 
-        self.next_index -= 1
+        value = self.head.value
+        self.head = self.head.next
         self.num_elements -= 1
 
-        return self.arr[self.next_index]
+        return value
