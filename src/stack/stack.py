@@ -2,7 +2,7 @@ from src.base.node import Node
 
 class Stack:
 
-    def __init__(self, initial_size = 10):
+    def __init__(self):
         self.head = None
         self.num_elements = 0
 
@@ -33,3 +33,9 @@ class Stack:
         self.num_elements -= 1
 
         return value
+
+    def top(self):
+        if self.head is None:
+            return None
+
+        return self.head.value
