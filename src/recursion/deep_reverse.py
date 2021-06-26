@@ -1,8 +1,5 @@
 def deep_reverse(arr):
 
-    if len(arr) < 1:
-        return arr
-
     reversed_items = []
 
     for item in arr[::-1]:
